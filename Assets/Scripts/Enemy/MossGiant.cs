@@ -13,6 +13,7 @@ public class MossGiant : Enemy, IDamageable
         anim.SetTrigger("Hit");
         if (Health <= 0)
         {
+            reward();
             Destroy(gameObject);
         }
 

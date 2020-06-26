@@ -16,6 +16,7 @@ public class Spider : Enemy, IDamageable
 
     public void Damage()
     {
+        reward();
         Destroy(gameObject);
     }
 

@@ -23,6 +23,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private Vector3 _offset = new Vector3(0.3f, 0, 0);
 
+    [SerializeField]
+    private int diamonds { get; set; }
 
     enum CharacterState
     {
@@ -121,5 +123,16 @@ public class Player : MonoBehaviour, IDamageable
     public void Damage()
     {
         Debug.Log("ohhh danho");
+    }
+
+    public void addDiamond(int diamond)
+    {
+        this.diamonds += diamond;
+        UiManager.IUinstance.UpdateGemCount(this.diamonds);
+    }
+
+    public int Diamonds()
+    {
+        return diamonds;
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7445588334637076735}
   - component: {fileID: 3492879179469710783}
   - component: {fileID: -7576085309103710896}
+  - component: {fileID: 552473282082127761}
+  - component: {fileID: 3119044212040731214}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -70,14 +72,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 3244622203517571467, guid: 5f0c81a5393a9de4a80d29e81de6ef82,
-    type: 3}
+  m_SortingOrder: 60
+  m_Sprite: {fileID: 21300056, guid: 4b9d515d354f03f46a61a6717c18c782, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.23, y: 1.19}
+  m_Size: {x: 1.12, y: 1.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,3 +103,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &552473282082127761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715397560868337675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd03a7e2314c6e84ea30b41006c89ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &3119044212040731214
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715397560868337675}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0040023625, y: -0.042024434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.12, y: 1.12}
+    newSize: {x: 1.12, y: 1.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8478419, y: 0.53966284}
+  m_EdgeRadius: 0

@@ -19,6 +19,9 @@ public abstract class Enemy : MonoBehaviour
 
     protected GameObject player;
 
+    [SerializeField]
+    protected GameObject diamondPrefab;
+
     public  virtual void Attack()
     {
         Debug.Log("Base attack called");
@@ -75,6 +78,12 @@ public abstract class Enemy : MonoBehaviour
         }
 
 
+    }
+
+    protected void reward()
+    {
+        GameObject go = Instantiate(diamondPrefab, transform.position, Quaternion.identity);
+        go.GetComponent<Diamond>().Gems += gems;
     }
 
     public virtual void Move()
