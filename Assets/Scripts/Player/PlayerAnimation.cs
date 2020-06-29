@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -26,5 +25,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator.SetTrigger("Attack");
         _swordAnimator.SetTrigger("SwordAnimation");
+    }
+
+    public void Dead()
+    {
+        _animator.SetTrigger("Dead");
     }
 }

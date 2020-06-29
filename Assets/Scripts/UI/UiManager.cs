@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,8 @@ public class UiManager : MonoBehaviour
 
     [SerializeField]
     private Image selection;
+
+    public Image[] lifes;
        
     public static UiManager IUinstance
     {
@@ -40,5 +41,18 @@ public class UiManager : MonoBehaviour
     public void UpdateGemCount(int count)
     {
         gemCount.text = "" + count;
+    }
+
+    public void UpdateLives(float livesRemaining) 
+    {
+        for (int i = 0; i < lifes.Length; i++)
+        {
+            if ( i > livesRemaining -1)
+            {
+                lifes[i].enabled = false;
+            }
+
+        }
+        
     }
 }

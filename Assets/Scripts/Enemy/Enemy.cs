@@ -67,7 +67,7 @@ public abstract class Enemy : MonoBehaviour
         }
 
 
-        if (Mathf.Abs(d) < 1f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        if (Mathf.Abs(d) < 1f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") && player.GetComponent<Player>().isLife())
         {
             anim.SetBool("InCombat", true);
 

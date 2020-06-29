@@ -1,8 +1,7 @@
 ﻿using Assets.Scripts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -26,6 +25,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private int diamonds { get; set; }
 
+    
     enum CharacterState
     {
         IDLE = 1,
@@ -48,22 +48,25 @@ public class Player : MonoBehaviour, IDamageable
 
     bool launchedCoroutine = false;
 
-    public float Health { get; set; }
+    public float Health { get; set; } = 4;
 
     // Update is called once per frame
     void Update()
     {
                 
         bool isGrounded = IsGrounded();
-        Movement(isGrounded);
-        Attack(isGrounded);
+        if (Health > 0)
+        {
+            Movement(isGrounded);
+            Attack(isGrounded);
+        }
 
     }
 
 
     private void Attack(bool isGrounded)
     {
-        bool attack = Input.GetMouseButtonDown(0);
+        bool attack = CrossPlatformInputManager.GetButtonDown("A_Button") ||Input.GetMouseButtonDown(1);
         if (attack)
         {
             if (isGrounded)
@@ -78,6 +81,12 @@ public class Player : MonoBehaviour, IDamageable
     {
 
         float move = Input.GetAxisRaw("Horizontal");
+
+        if (move == 0)
+        {
+            move = CrossPlatformInputManager.GetAxis("Horizontal");
+        }
+
         //flip
         if ((move < 0 && !_spriteRender.flipX) || (move>0 && _spriteRender.flipX))
         {
@@ -91,7 +100,7 @@ public class Player : MonoBehaviour, IDamageable
         _rigidbody2D.velocity = new Vector2(move * _speed, _rigidbody2D.velocity.y);
 
         
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.Space) || CrossPlatformInputManager.GetButtonDown("B_Button")) && isGrounded)
         {
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
         }
@@ -122,7 +131,16 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage()
     {
-        Debug.Log("ohhh danho");
+        if (Health > 0)
+        {
+            Health--;
+            UiManager.IUinstance.UpdateLives(Health);
+            if (Health == 0)
+            {
+                _playerAnimation.Dead();
+            }
+        }
+                
     }
 
     public void addDiamond(int diamond)
@@ -134,5 +152,10 @@ public class Player : MonoBehaviour, IDamageable
     public int Diamonds()
     {
         return diamonds;
+    }
+
+    public bool isLife()
+    {
+        return Health > 0;
     }
 }
